@@ -11,9 +11,19 @@
     <script>
         fetch("https://ci-swapi.herokuapp.com/api/")
             .then(response => response.json())
-            .then(data => {
-                document.getElementById("content").innerText = data.people;  //-or data["any data"]--/
+            // .then(data => {
+            //     document.getElementById("content").innerText = data.people;  //-or data["any data"]--/
+            //     //-- this is callback we can replace with javascript fuction --/
+            // })    // or is the same to use N1 with N2
+
+            .then(data => displayData(data)). //- N1 -/
+            .catch((e) => {
+                console.error("Error:", e);
             })
+
+        function displayData(data) {
+            document.getElementById("content").innerText = data; //- N2 -/
+        }
     </script>
 </body>
 </html>
